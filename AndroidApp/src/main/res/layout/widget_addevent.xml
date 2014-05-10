@@ -1,32 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             android:paddingLeft="15dp"
-             android:paddingRight="15dp">
-
-    <LinearLayout
-        android:id="@+id/buttonAddEventWidget"
-        android:orientation="horizontal"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/buttonAddEventWidget"
+              android:orientation="horizontal"
+              android:layout_width="fill_parent"
+              android:layout_height="48dp"
+              android:background="@drawable/widget_bg_card"
+              android:layout_gravity="center"
+              android:gravity="center"
+              android:layout_marginLeft="4dp"
+              android:layout_marginRight="4dp">
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/bg_card"
-        android:layout_gravity="center"
-        android:gravity="center">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_weight="1"
-            android:text="@string/title_app_wdiget"
-            android:textColor="#737373"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            android:gravity="center_vertical"
-            android:paddingLeft="10dp"
-            android:singleLine="true"/>
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/ic_action_send_now"/>
-    </LinearLayout>
-</FrameLayout>
+        android:layout_height="match_parent"
+        android:text="@string/title_app_wdiget"
+        android:layout_weight="1"
+        android:textColor="@color/widget_text"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:gravity="center_vertical"
+        android:paddingLeft="10dp"
+        android:singleLine="true"/>
+    <ImageView
+        android:layout_width="48dp"
+        android:layout_height="match_parent"
+        android:src="@drawable/ic_action_send_now"/>
+</LinearLayout>
+

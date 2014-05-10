@@ -4,14 +4,14 @@
         <shape android:shape="rectangle"
                android:dither="true">
             <corners android:radius="2dp"/>
-            <solid android:color="#d0d0d0" />
+            <solid android:color="@color/card_shadow" />
         </shape>
     </item>
     <item android:bottom="2dp">
         <shape android:shape="rectangle"
                android:dither="true">
             <corners android:radius="2dp" />
-            <solid android:color="@android:color/white" />
+            <solid android:color="@color/card_background" />
             <padding android:bottom="4dp"
                      android:left="4dp"
                      android:right="4dp"

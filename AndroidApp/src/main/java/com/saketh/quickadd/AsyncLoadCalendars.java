@@ -14,7 +14,6 @@
 
 package com.saketh.quickadd;
 
-import android.util.Log;
 
 import com.google.api.services.calendar.model.CalendarList;
 
@@ -22,38 +21,47 @@ import java.io.IOException;
 
 /**
  * Asynchronously load the calendars.
- * 
+ *
  * @author Yaniv Inbar
  */
 class AsyncLoadCalendars extends CalendarAsyncTask {
-  private static boolean sAlive = false;
-  AsyncLoadCalendars(HomeActivity calendarSample) {
-    super(calendarSample);
-  }
+    private static Boolean sAlive = false;
 
-  @Override
-  protected void doInBackground() throws IOException {
-    CalendarList feed = client.calendarList().list().setFields(CalendarInfo.FEED_FIELDS).execute();
-    model.reset(feed.getItems());
-    Log.d("QuickAdd", "Size - " + model.toSortedArray().length);
-    for (CalendarInfo cal : model.toSortedArray()) {
-      Log.d("QuickAdd", cal.id);
+    AsyncLoadCalendars(HomeActivity calendarSample) {
+        super(calendarSample);
     }
-    sAlive = false;
-    activity.showLoadingCalendarsActivity(false);
-  }
+
+    static void run(HomeActivity activity) {
+        activity.logd("Async Run");
+        synchronized (sAlive) {
+            if (!sAlive) {
+                activity.logd("New Async Run");
+                new AsyncLoadCalendars(activity).execute();
+                sAlive = true;
+                activity.showLoadingCalendarsActivity(true);
+            } else {
+                activity.logd("Async run Cancelled");
+            }
+        }
+    }
+
+    @Override
+    protected void doInBackground() throws IOException {
+        activity.logd("Asyncload  doInBackground");
+        CalendarList feed = client.calendarList().list().setFields(CalendarInfo.FEED_FIELDS)
+                .execute();
+        model.reset(feed.getItems());
+        activity.logd("Size - " + model.toSortedArray().length);
+        for (CalendarInfo cal : model.toSortedArray()) {
+            activity.logd(cal.id);
+        }
+        sAlive = false;
+        activity.showLoadingCalendarsActivity(false);
+    }
 
     @Override
     protected void doInBackgroundError() {
         sAlive = false;
         activity.showLoadingCalendarsActivity(false);
     }
-
-    static void run(HomeActivity activity) {
-    if (!sAlive) {
-      new AsyncLoadCalendars(activity).execute();
-      sAlive = true;
-      activity.showLoadingCalendarsActivity(true);
-    }
-  }
 }

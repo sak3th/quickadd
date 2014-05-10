@@ -1,182 +1,167 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:tools="http://schemas.android.com/tools"
-            tools:context="com.saketh.quickadd.HomeActivity"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              tools:context="com.saketh.quickadd.HomeActivity"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/activity_background"
+              android:orientation="vertical">
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:indeterminate="true"
+        android:max="100"
+        android:layout_marginTop="-7dp"
+        android:visibility="gone"/>
+
+    <ScrollView android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/scrollViewCards"
+                android:paddingTop="8dp"
+                android:scrollbars="none"
+                android:fillViewport="true">
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/scrollViewCards"
-            android:background="#e5e5e5"
-            android:fillViewport="true">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:layout_gravity="center_horizontal">
-
-        <ProgressBar
-            android:id="@+id/progressBar"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:indeterminate="true"
-            android:max="100"
-            android:layout_marginTop="-7dp"
-            android:visibility="invisible"/>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:id="@+id/linearLayoutEvent"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_card"
-            android:gravity="center_vertical"
-            android:paddingLeft="10dp"
-            android:layout_gravity="center_vertical">
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:id="@+id/editTextEvent"
-                android:hint="@string/hint_add_event_in_cal"
-                android:layout_weight="1"
-                android:textColor="#737373"
-                android:textColorHint="#909090"
-                android:textSize="18sp"
-                android:background="#ffffff"
-                android:inputType="textCapSentences|textAutoCorrect"/>
-            <ImageView
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:src="@drawable/ic_action_send_now"
-                android:id="@+id/buttonAddEvent"
-                android:background="#ffffff"/>
-            <ProgressBar
-                android:id="@+id/progressBarAddEvent"
-                style="?android:attr/progressBarStyleLarge"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:paddingRight="8dp"
-                android:indeterminate="true"
-                android:visibility="gone"/>
-        </LinearLayout>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="5dp" android:background="@android:color/transparent"
-            android:id="@+id/viewLinearLayoutEventDivider"/>
-
-        <LinearLayout
             android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/linearLayoutExamples"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:background="@drawable/bg_card">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:textColor="#737373"
-                android:text="Examples"
-                android:id="@+id/textViewExamples"
-                android:background="#ffffff"/>
-            <!-- examples will be added from code -->
-        </LinearLayout>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="5dp" android:background="@android:color/transparent"
-            android:id="@+id/viewLinearLayoutExamplesDivider"/>
-
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/linearLayoutCalendar"
-            android:clickable="true"
-            android:background="@drawable/bg_card"
-            android:gravity="center_horizontal"
-            android:paddingLeft="10dp"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
             android:layout_gravity="center_horizontal">
+
             <LinearLayout
                 android:orientation="horizontal"
+                android:id="@+id/linearLayoutEvent"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
+                android:background="@drawable/bg_card"
                 android:gravity="center_vertical"
-                android:layout_gravity="center_vertical">
-                <TextView
+                android:paddingLeft="10dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginBottom="5dp">
+                <EditText
                     android:layout_width="match_parent"
-                    android:layout_height="48dp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/editTextEvent"
+                    android:hint="@string/hint_add_event_in_cal"
                     android:layout_weight="1"
-                    android:textSize="18sp"
-                    android:textColor="#737373"
-                    android:text="Calendar"
-                    android:id="@+id/textViewCalendar"
-                    android:gravity="center_vertical"/>
+                    android:background="@color/card_background"
+                    android:inputType="textCapSentences|textAutoCorrect"
+                    style="@style/CardAddEventText"/>
                 <ImageView
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:id="@+id/imageViewCalendar"
-                    android:src="@drawable/ic_menu_today_holo_light"/>
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_action_send_now"
+                    android:id="@+id/buttonAddEvent"/>
+                <ProgressBar
+                    android:id="@+id/progressBarAddEvent"
+                    style="?android:attr/progressBarStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:indeterminate="true"
+                    android:visibility="gone"/>
             </LinearLayout>
+
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/linearLayoutFreeBusy"
-                android:gravity="center_horizontal"
-                android:layout_gravity="center_horizontal">
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="#e5e5e5"/>
+                android:id="@+id/linearLayoutExamples"
+                android:paddingLeft="10dp"
+                android:background="@drawable/bg_card"
+                android:layout_marginBottom="5dp">
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_weight="1"
-                    android:textColor="#737373"
-                    android:textSize="14sp"
-                    android:text="@string/status_free_schedule"
-                    android:id="@+id/textViewFreeBusy"
-                    android:gravity="left|center_vertical"/>
+                    android:layout_height="wrap_content"
+                    android:text="@string/title_examples"
+                    android:id="@+id/textViewExamples"
+                    style="@style/CardTitleText"/>
+                <!-- examples will be added from code -->
             </LinearLayout>
-            <ProgressBar
-                android:id="@+id/progressBarFreeBusy"
-                style="?android:attr/progressBarStyleLarge"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:paddingRight="8dp"
-                android:indeterminate="true"
-                android:visibility="gone"/>
-        </LinearLayout>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="5dp" android:background="@android:color/transparent"
-            android:id="@+id/viewLinearLayoutCalendarDivider"/>
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:id="@+id/linearLayoutNoConnection"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_card"
-            android:paddingLeft="10dp"
-            android:gravity="center_vertical"
-            android:layout_gravity="center_vertical">
-            <TextView
+            <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_weight="1"
-                android:textSize="18sp"
-                android:textColor="#737373"
-                android:text="@string/status_no_connection"
-                android:id="@+id/textViewNoConnection"
-                android:gravity="center_vertical|center_horizontal"/>
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:background="@drawable/bg_card"
+                android:gravity="center_horizontal"
+                android:id="@+id/linearLayoutCalendarEvents"
+                android:paddingLeft="10dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="5dp">
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/linearLayoutCalendar"
+                    android:layout_marginBottom="2dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="@string/title_calendar"
+                        android:id="@+id/textViewCalendar"
+                        android:gravity="center_vertical"
+                        style="@style/CardTitleText"/>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/imageViewCalendar"
+                        android:src="@drawable/ic_menu_today_holo_light"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/linearLayoutFreeBusy"
+                    android:gravity="center_horizontal"
+                    android:layout_gravity="center_horizontal">
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        style="@style/ListDivider"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_weight="1"
+                        android:text="@string/status_free_schedule"
+                        android:id="@+id/textViewFreeBusy"
+                        android:gravity="left|center_vertical"
+                        style="@style/CardBodyText"/>
+                </LinearLayout>
+                <ProgressBar
+                    android:id="@+id/progressBarFreeBusy"
+                    style="?android:attr/progressBarStyleLarge"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:indeterminate="true"
+                    android:visibility="gone"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:id="@+id/linearLayoutNoConnection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_card"
+                android:gravity="center_vertical"
+                android:layout_gravity="center_vertical"
+                android:layout_marginBottom="5dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/status_no_connection"
+                    android:id="@+id/textViewNoConnection"
+                    android:gravity="center_vertical|center_horizontal"
+                    style="@style/CardBodyText"/>
+            </LinearLayout>
+
         </LinearLayout>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="5dp" android:background="@android:color/transparent"
-            android:id="@+id/viewLinearLayoutNoConnectionDivider"/>
-    </LinearLayout>
-</ScrollView>
+    </ScrollView>
+</LinearLayout>
+

@@ -11,24 +11,34 @@
     </style>
 
     <style name="ActionBarTitle">
-        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/activity_title</item>
+        <item name="android:textSize">@dimen/card_title_text_size</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textColor">#737373</item>
     </style>
 
-    <style name="BusyActionBar" parent="@android:style/Widget.Holo.Light.ActionBar.Solid">
-        <item name="android:titleTextStyle">@style/ActionBarTitle</item>
+    <style name="CardAddEventText">
+        <item name="android:textColor">@color/card_text</item>
+        <item name="android:textColorHint">@color/card_text_hint</item>
+        <item name="android:textSize">@dimen/card_title_text_size</item>
     </style>
 
-    <style name="BusyActionBarTitle">
-        <item name="android:textSize">20sp</item>
+    <style name="CardTitleText">
+        <item name="android:textColor">@color/card_text</item>
+        <item name="android:textSize">@dimen/card_title_text_size</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="FreeActionBar" parent="@android:style/Widget.Holo.Light.ActionBar.Solid">
-        <item name="android:titleTextStyle">@style/ActionBarTitle</item>
+    <style name="CardBodyText">
+        <item name="android:textColor">@color/card_text</item>
+        <item name="android:textSize">@dimen/card_body_text_size</item>
     </style>
 
-    <style name="FreeActionBarTitle">
-        <item name="android:textSize">20sp</item>
+    <style name="CardListItemText">
+        <item name="android:textColor">@color/card_text</item>
+        <item name="android:textSize">@dimen/card_list_text_size</item>
+    </style>
+
+    <style name="ListDivider">
+        <item name="android:background">@color/list_divider</item>
     </style>
 </resources>

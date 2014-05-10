@@ -1,22 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
               android:orientation="horizontal"
               android:layout_width="match_parent"
               android:layout_height="48dp"
               android:clickable="true"
               android:gravity="center_vertical"
-              android:layout_gravity="center_vertical">
+              android:layout_gravity="center_vertical"
+              tools:context=".HomeActivity">
     <TextView
         android:id="@+id/textViewExample"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:textColor="#737373"
-        android:textSize="14sp"
-        android:textStyle="italic"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:textColor="@color/card_text"
+        android:textSize="@dimen/card_list_text_size"
         android:gravity="center_vertical"/>
     <ImageView
         android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:id="@+id/imageViewCalendar"
-        android:src="@drawable/copy_to_top"/>
+        android:layout_height="match_parent"
+        android:id="@+id/imageViewCopy"
+        android:src="@drawable/ic_copy_to_top"
+        android:layout_gravity="right"/>
 </LinearLayout>

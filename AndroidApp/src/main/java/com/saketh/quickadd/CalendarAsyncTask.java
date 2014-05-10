@@ -16,7 +16,8 @@ package com.saketh.quickadd;
 
 import android.os.AsyncTask;
 
-import com.google.api.client.googleapis.extensions.android.gms.auth.GooglePlayServicesAvailabilityIOException;
+import com.google.api.client.googleapis.extensions.android.gms.auth
+        .GooglePlayServicesAvailabilityIOException;
 import com.google.api.client.googleapis.extensions.android.gms.auth.UserRecoverableAuthIOException;
 
 import java.io.IOException;
@@ -24,44 +25,47 @@ import java.io.IOException;
 
 abstract class CalendarAsyncTask extends AsyncTask<Void, Void, Boolean> {
 
-  final HomeActivity activity;
-  final CalendarModel model;
-  final com.google.api.services.calendar.Calendar client;
+    final HomeActivity activity;
+    final CalendarModel model;
+    final com.google.api.services.calendar.Calendar client;
 
-  CalendarAsyncTask(HomeActivity activity) {
-    this.activity = activity;
-    model = activity.model;
-    client = activity.client;
-  }
-
-  @Override
-  protected void onPreExecute() {
-    super.onPreExecute();
-  }
-
-  @Override
-  protected final Boolean doInBackground(Void... ignored) {
-    try {
-      doInBackground();
-      return true;
-    } catch (final GooglePlayServicesAvailabilityIOException availabilityException) {
-      activity.showGooglePlayServicesAvailabilityErrorDialog(
-          availabilityException.getConnectionStatusCode());
-    } catch (UserRecoverableAuthIOException userRecoverableException) {
-      activity.startActivityForResult(
-          userRecoverableException.getIntent(), HomeActivity.REQUEST_AUTHORIZATION);
-    } catch (IOException e) {
-      doInBackgroundError();
-      Utils.logAndShow(activity, HomeActivity.TAG, e);
+    CalendarAsyncTask(HomeActivity activity) {
+        this.activity = activity;
+        model = activity.model;
+        client = activity.client;
     }
-    return false;
-  }
 
-  @Override
-  protected final void onPostExecute(Boolean success) {
-    super.onPostExecute(success);
-  }
+    @Override
+    protected void onPreExecute() {
+        super.onPreExecute();
+    }
 
-  abstract protected void doInBackground() throws IOException;
-  abstract protected void doInBackgroundError();
+    @Override
+    protected final Boolean doInBackground(Void... ignored) {
+        try {
+            doInBackground();
+            return true;
+        } catch (final GooglePlayServicesAvailabilityIOException availabilityException) {
+            doInBackgroundError();
+            activity.showGooglePlayServicesAvailabilityErrorDialog(
+                    availabilityException.getConnectionStatusCode());
+        } catch (UserRecoverableAuthIOException userRecoverableException) {
+            doInBackgroundError();
+            activity.startActivityForResult(
+                    userRecoverableException.getIntent(), HomeActivity.REQUEST_AUTHORIZATION);
+        } catch (IOException e) {
+            doInBackgroundError();
+            Utils.logAndShow(activity, HomeActivity.TAG, e);
+        }
+        return false;
+    }
+
+    @Override
+    protected final void onPostExecute(Boolean success) {
+        super.onPostExecute(success);
+    }
+
+    abstract protected void doInBackground() throws IOException;
+
+    abstract protected void doInBackgroundError();
 }

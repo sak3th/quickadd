@@ -2,5 +2,10 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">8dp</dimen>
     <dimen name="activity_vertical_margin">8dp</dimen>
+    <dimen name="activity_title_text_sze">20sp</dimen>
     <dimen name="today_icon_text_size">14sp</dimen>
+    <dimen name="card_title_text_size">18sp</dimen>
+    <dimen name="card_body_text_size">18sp</dimen>
+    <dimen name="card_list_text_size">14sp</dimen>
+    <dimen name="widget_text_size">20sp</dimen>
 </resources>
